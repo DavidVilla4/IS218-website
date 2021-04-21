@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "project"; // your database name
+$servername = "sql1.njit.edu";
+$username = "np395";
+$password = "Th1s1smyp@ssword";
+$dbname = "np395"; // your database name
 
 try {
     $conn = new PDO("mysql:host=$servername;$dbname", $username, $password);
