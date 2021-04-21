@@ -40,10 +40,10 @@ CREATE TABLE `accounts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `complete to-do`
+-- Table structure for table `CompleteTasks`
 --
 
-CREATE TABLE `complete to-do` (
+CREATE TABLE `CompleteTasks` (
   `username` varchar(30) NOT NULL,
   `title` text NOT NULL,
   `description` text NOT NULL,
@@ -53,10 +53,10 @@ CREATE TABLE `complete to-do` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `incomplete to-do`
+-- Table structure for table `IncompleteTask`
 --
 
-CREATE TABLE `incomplete to-do` (
+CREATE TABLE `IncompleteTask` (
   `username` varchar(30) NOT NULL,
   `title` text NOT NULL,
   `due day` datetime DEFAULT NULL,
@@ -74,15 +74,15 @@ ALTER TABLE `accounts`
   ADD PRIMARY KEY (`User Name`,`Email`);
 
 --
--- Indexes for table `complete to-do`
+-- Indexes for table `CompleteTasks`
 --
-ALTER TABLE `complete to-do`
+ALTER TABLE `CompleteTasks`
   ADD PRIMARY KEY (`username`);
 
 --
--- Indexes for table `incomplete to-do`
+-- Indexes for table `IncompleteTask`
 --
-ALTER TABLE `incomplete to-do`
+ALTER TABLE `IncompleteTask`
   ADD PRIMARY KEY (`username`);
 COMMIT;
 
