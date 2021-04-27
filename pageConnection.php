@@ -1,0 +1,17 @@
+<?php
+$servername = "sql1.njit.edu";
+$username = "np395";
+$password = "Th1s1smyp@ssword";
+$db = "np395"; // your database name
+
+try {
+    $conn = new PDO("mysql:host=$servername;$db", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully"; 
+    }
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    }
+?>
