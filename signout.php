@@ -7,6 +7,6 @@
     </head>
     <body>
         <p>You already signed out, Thank you !</p >
-        <p>< a href=' '>Login Here</ a></p >
+        <p>< a href='login.php'>Login Here</ a></p >
     </body>
 </html>
