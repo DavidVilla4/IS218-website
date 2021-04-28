@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="project.css" />
     </head>
     <body>
-        <p>You already signed out, Thank you !</p >
-        <p>< a href='login.php'>Login Here</ a></p >
+    <p>you have signout </p>
+    <p><a href="login.php">Please login here</a></p>
     </body>
 </html>
