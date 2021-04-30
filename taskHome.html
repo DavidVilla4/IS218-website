@@ -1,0 +1,50 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <script src="task.js"></script>
+    <link rel="stylesheet" href="taskStyle.css">
+    <title>To Do List</title>
+      
+   <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">-->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+    
+    <body>
+    <h1>
+    To Do List    
+    </h1>
+    
+    
+    <div id="myDiv" class="header">
+        <input type="text" id="newTask">
+        <input type="date" id="newDate">
+        <span onClick="newTask()" class="addBtn">Add</span>
+    </div>
+        
+        
+        
+    <h2>To-Do Tasks</h2>
+        <ul id="todo">
+            <li id="list-item" onclick="compTask()">die(someday)</li>
+            <li id="list-item" onclick="compTask()">yellow</li>
+            
+            
+        </ul>
+        
+    <h2>Completed Tasks</h2>
+        <ul id="comp">
+            <li>Eat</li>
+        </ul>
+        
+      
+    <p id="new"></p>
+        
+        
+        <script src="task.js"></script>
+      
+    
+    </body>
