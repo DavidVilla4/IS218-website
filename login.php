@@ -37,6 +37,10 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     <input type="password" id="password" name="password" maxlength="30" value="<?php if (isset($_POST["password"])) {echo $_POST["password"];} ?>" required><br><br>
 
     <input type="submit">
+
+    <p>
+        Don't have an account? <a href="signup.php">Sign Up</a>
+    </p>
 </form>
 </body>
 </html>
