@@ -1,76 +1,42 @@
-<!doctype html>
-<html>
-<head>
-    <title>Login</title>
-    <style>
-        body{
-
-            margin-top: 100px;
-            margin-bottom: 100px;
-            margin-right: 150px;
-            margin-left: 80px;
-            background-color: azure ;
-            color: palevioletred;
-            font-family: verdana;
-            font-size: 100%
-
-        }
-        h1 {
-            color: indigo;
-            font-family: verdana;
-            font-size: 100%;
-        }
-        h3 {
-            color: indigo;
-            font-family: verdana;
-            font-size: 100%;
-        } </style>
-</head>
-<body>
-<center><h1>CREATE REGISTRATION AND LOGIN FORM USING PHP AND MYSQL</h1></center>
-<p><a href="register.php">Register</a> | <a href="login.php">Login</a></p>
-<h3>Login Form</h3>
-<form action="" method="POST">
-    Username: <input type="text" name="user"><br />
-    Password: <input type="password" name="pass"><br />
-    <input type="submit" value="Login" name="submit" />
-</form>
 <?php
-if(isset($_POST["submit"])){
+session_start();
+// Check if user is already logged in, and redirect to task page if so
+if (isset($_SESSION["logged"]) && $_SESSION["logged"] == true) {
+    header("Location: task.php");
+    exit();
+}
 
-    if(!empty($_POST['user']) && !empty($_POST['pass'])) {
-        $user=$_POST['user'];
-        $pass=$_POST['pass'];
+require("config/functions.php");
 
-        $conn=mysqli_connect('localhost','root','') or die(mysql_error());
-        mysqli_select_db($conn,'user-registration') or die("cannot select DB");
+if (isset($_POST["username"]) && isset($_POST["password"])) {
 
-        $query=mysqli_query($conn,"SELECT * FROM login WHERE username='".$user."' AND password='".$pass."'");
-        $numrows=mysqli_num_rows($query);
-        if($numrows!=0)
-        {
-            while($row=mysqli_fetch_assoc($query))
-            {
-                $dbusername=$row['username'];
-                $dbpassword=$row['password'];
-            }
-
-            if($user == $dbusername && $pass == $dbpassword)
-            {
-                session_start();
-                $_SESSION['sess_user']=$user;
-
-                /* Redirect browser */
-                header("Location: member.php");
-            }
-        } else {
-            echo "Invalid username or password!";
-        }
-
+    $username = trim($_POST["username"]);
+    if (validateCredentials($_POST["username"], $_POST["password"])) {
+        $_SESSION["logged"] = true;
+        $_SESSION["username"] = $username;
+        header("Location: task.php");
+        exit();
     } else {
-        echo "All fields are required!";
+        echo "Invalid credentials";
     }
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+</head>
+<body>
+<form action="login.php" autocomplete="off" method="post">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" maxlength="30" value="<?php if (isset($_POST["username"])) {echo $_POST["username"];} ?>" required><br><br>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" maxlength="30" value="<?php if (isset($_POST["password"])) {echo $_POST["password"];} ?>" required><br><br>
+
+    <input type="submit">
+</form>
 </body>
 </html>
