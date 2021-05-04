@@ -38,7 +38,9 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
             $params = array(":username"=>$_POST["username"], ":email"=>$_POST["email"], ":password"=>$_POST["password"], ":fname"=>$_POST["fname"], ":lname"=>$_POST["lname"]);
             $results = db_execute_one($query, $params);
             $_SESSION["logged"] = true;
-            $_SESSION["username"] = $_POST["username"];
+            $_SESSION["username"] = trim($_POST["username"]);
+            $_SESSION["fname"] = trim($_POST["fname"]);
+            $_SESSION["lname"] = trim($_POST["lname"]);
             header("Location: task.php");
             exit();
 

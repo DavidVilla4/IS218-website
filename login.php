@@ -10,10 +10,18 @@ require("config/functions.php");
 
 if (isset($_POST["username"]) && isset($_POST["password"])) {
 
-    $username = trim($_POST["username"]);
     if (validateCredentials($_POST["username"], $_POST["password"])) {
+        $username = trim($_POST["username"]);
         $_SESSION["logged"] = true;
         $_SESSION["username"] = $username;
+
+        //require("config/db.php");
+        $query = "SELECT fname, lname FROM accounts WHERE username = :username";
+        $params = array(":username"=>$username);
+        $results = db_execute_one($query, $params);
+        print_r($results);
+        $_SESSION["fname"] = $results["fname"];
+        $_SESSION["lname"] = $results["lname"];
         header("Location: task.php");
         exit();
     } else {
