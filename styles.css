@@ -5,28 +5,36 @@ body {
 
 .header {
     background: #23272A;
-    padding: 30px;
+    padding: 20px;
     color: white;
-    font-size: 28px;
+    font-size: xx-large;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
 }
 
-.header-items-left {
+.header-items {
+    flex: 1;
     display: flex;
-    flex-direction: row;
-    justify-content: left;
+    justify-content: center;
+}
+
+.header-items:first-child > div {
+    margin-right: auto;
+}
+
+.header-items:last-child > div {
+    margin-left: auto;
 }
 
 .header-items-right {
     display: flex;
     flex-direction: row-reverse;
     justify-content: right;
+    margin-left: 30px;
 }
 
 .header-item {
-    margin-inline: 50px;
+    margin-inline: 30px;
 }
 
 .userinfo {
@@ -44,7 +52,7 @@ body {
     border: none;
     color: white;
     cursor: pointer;
-    font-size: 28px;
+    font-size: x-large;
 }
 
 .header-link-button:hover {

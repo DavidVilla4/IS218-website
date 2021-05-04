@@ -11,7 +11,7 @@ session_start();
 </head>
 <body>
 <div class="header">
-    <div class="header-items-left">
+    <div class="header-items">
         <div class="header-item">
             <form method="post" action="task.php" class="header-link-form">
                 <button type="submit" name="tasks" value="tasks" class="header-link-button">Tasks</button>
@@ -23,17 +23,19 @@ session_start();
         <?php if (isset($_SESSION["fname"]) && isset($_SESSION["lname"])) echo $_SESSION["fname"] . " " . $_SESSION["lname"] ?>
     </div>
 
-    <div class="header-items-right">
-        <div class="header-item">
-            <form method="post" action="logout.php" class="header-link-form">
-                <button type="submit" name="logout" value="logout" class="header-link-button">Log Out</button>
-            </form>
-        </div>
+    <div class="header-items">
+        <div class="header-items-right">
+            <div class="header-item">
+                <form method="post" action="logout.php" class="header-link-form">
+                    <button type="submit" name="logout" value="logout" class="header-link-button">Log Out</button>
+                </form>
+            </div>
 
-        <div class="header-item">
-            <form method="post" action="profile.php" class="header-link-form">
-                <button type="submit" name="profile" value="profile" class="header-link-button">Profile</button>
-            </form>
+            <div class="header-item">
+                <form method="post" action="profile.php" class="header-link-form">
+                    <button type="submit" name="profile" value="profile" class="header-link-button">Profile</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
