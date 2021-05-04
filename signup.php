@@ -2,7 +2,7 @@
 session_start();
 // Check if user is already logged in, and redirect to task page if so
 if (isset($_SESSION["logged"]) && $_SESSION["logged"] == true) {
-    header("Location: task.php");
+    header("Location: tasks/incomplete.php");
     exit();
 }
 
@@ -41,7 +41,7 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
             $_SESSION["username"] = trim($_POST["username"]);
             $_SESSION["fname"] = trim($_POST["fname"]);
             $_SESSION["lname"] = trim($_POST["lname"]);
-            header("Location: task.php");
+            header("Location: tasks/incomplete.php");
             exit();
 
         } catch(PDOException $e) {

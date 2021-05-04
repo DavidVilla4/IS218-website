@@ -1,0 +1,15 @@
+.content {
+    margin: 1em;
+    color: white;
+}
+
+.tasks-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tasks-items {
+
+}

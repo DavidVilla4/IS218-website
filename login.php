@@ -2,7 +2,7 @@
 session_start();
 // Check if user is already logged in, and redirect to task page if so
 if (isset($_SESSION["logged"]) && $_SESSION["logged"] == true) {
-    header("Location: task.php");
+    header("Location: tasks/incomplete.php");
     exit();
 }
 
@@ -15,14 +15,13 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
         $_SESSION["logged"] = true;
         $_SESSION["username"] = $username;
 
-        //require("config/db.php");
         $query = "SELECT fname, lname FROM accounts WHERE username = :username";
         $params = array(":username"=>$username);
         $results = db_execute_one($query, $params);
         print_r($results);
         $_SESSION["fname"] = $results["fname"];
         $_SESSION["lname"] = $results["lname"];
-        header("Location: task.php");
+        header("Location: tasks/incomplete.php");
         exit();
     } else {
         echo "Invalid credentials";

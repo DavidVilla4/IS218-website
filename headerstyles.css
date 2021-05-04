@@ -33,6 +33,13 @@ body {
     margin-left: 30px;
 }
 
+.header-items-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin-left: 30px;
+}
+
 .header-item {
     margin-inline: 30px;
 }
@@ -59,6 +66,3 @@ body {
     color: chocolate;
 }
 
-.content {
-
-}
