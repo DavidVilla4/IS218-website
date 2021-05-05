@@ -101,7 +101,7 @@ try {
         </div>
         <div class="tasks-items">
             <form method="post" action="createtask.php" class="task-list-form">
-                <button type="submit" name="createnew" value="createnew" class="new-task-button">Add New Task</button>
+                <button type="submit" name="createnew" value="createnew" class="big-orange-button">Add New Task</button>
             </form>
         </div>
 
@@ -113,19 +113,19 @@ try {
             <div class="flex-container-horizontal">
                 <div class="flex-item-horizontal">
                     <form method="post" action="incomplete.php" class="task-list-form">
-                        <button type="submit" name="chron-desc" value="chron-desc" class="new-task-button">Chronological Descending</button>
+                        <button type="submit" name="chron-desc" value="chron-desc" class="big-orange-button">Chronological Descending</button>
                     </form>
                 </div>
 
                 <div class="flex-item-horizontal">
                     <form method="post" action="incomplete.php" class="task-list-form">
-                        <button type="submit" name="chron-asc" value="chron-asc" class="new-task-button">Chronological Ascending</button>
+                        <button type="submit" name="chron-asc" value="chron-asc" class="big-orange-button">Chronological Ascending</button>
                     </form>
                 </div>
 
                 <div class="flex-item-horizontal">
                     <form method="post" action="incomplete.php" class="task-list-form">
-                        <button type="submit" name="urg-desc" value="urg-desc" class="new-task-button">Urgency Descending</button>
+                        <button type="submit" name="urg-desc" value="urg-desc" class="big-orange-button">Urgency Descending</button>
                     </form>
                 </div>
             </div>

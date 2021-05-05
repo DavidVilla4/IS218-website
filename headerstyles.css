@@ -66,3 +66,17 @@ body {
     color: chocolate;
 }
 
+.big-orange-button {
+    background: chocolate;
+    padding: 15px 5px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: large;
+}
+
+.big-orange-button:hover {
+    color: white;
+    background: #9c5019;
+}

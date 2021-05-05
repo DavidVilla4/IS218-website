@@ -144,7 +144,7 @@ if (isset($_POST["title"])) {
 
                 <div class="tasks-container">
                     <div class="tasks-items" style="justify-content: ">
-                        <button type="submit" name="createtask" value="createtask" class="new-task-button">Create Task</button>
+                        <button type="submit" name="createtask" value="createtask" class="big-orange-button">Create Task</button>
                     </div>
                 </div>
             </form>

@@ -162,7 +162,7 @@ if (isset($_POST["submitedit"])) {
 
             <div class="tasks-container">
                 <div class="tasks-items" style="justify-content: ">
-                    <button type="submit" name="submitedit" value="submitedit" class="new-task-button">Edit Task</button>
+                    <button type="submit" name="submitedit" value="submitedit" class="big-orange-button">Edit Task</button>
                 </div>
             </div>
         </form>
