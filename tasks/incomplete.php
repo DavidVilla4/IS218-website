@@ -105,7 +105,7 @@ if (isset($_POST["delete"])) {
                     </th>
                 </tr>
                 <?php
-
+                require("../config/functions.php");
 
                 $query = "SELECT * FROM tasks WHERE username = :username AND completed IS FALSE";
                 $params = array(":username" => $_SESSION["username"]);
@@ -115,17 +115,12 @@ if (isset($_POST["delete"])) {
                         echo "<tr><td></td><td></td><td></td><td></td></tr>";
                     } else {
                         foreach ($results as $task) {
-                            $urgency = match ($task["urgency"]) {
-                                "low" => "Low",
-                                "high" => "High",
-                                default => "Medium",
-                            };
                             $currentFile = basename(__FILE__);
                             echo "<tr>";
                             echo "<td>" . $task["title"] . "</td>";
                             echo "<td>" . $task["description"] . "</td>";
-                            echo "<td>" . $task["duedate"] . "</td>"; // TODO - FORMAT TIME UNTIL DUE DATE PROPERLY
-                            echo "<td>" . $urgency . "</td>";
+                            echo "<td>" . convertDateToNatural($task["duedate"]) . "</td>";
+                            echo "<td>" . $task["urgency"] . "</td>";
                             echo "<td><form method='post' action='incomplete.php' class='task-list-form'>
                                     <input type='hidden' name='id' value='${task["id"]}'>
                                     <button type='submit' name='markcomplete' value='markcomplete' class='task-list-button'>Mark Completed</button>

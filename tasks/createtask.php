@@ -120,9 +120,9 @@ if (isset($_POST["title"])) {
 
                         <div class="flex-item-horizontal-right">
                             <select name="urgency" id="urgency">
-                                <option value="low">Low</option>
-                                <option value="med">Medium</option>
-                                <option value="high">High</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
                             </select><br>
                         </div>
                     </div>

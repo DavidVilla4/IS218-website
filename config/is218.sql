@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `duedate` datetime NOT NULL,
-  `urgency` enum('low','med','high') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Enum of: low, med, high',
+  `urgency` enum('Low','Medium','High') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Enum of: low, med, high',
   `completed` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Marks if task is completed or not'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

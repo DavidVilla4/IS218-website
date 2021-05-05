@@ -53,3 +53,63 @@ function validateCredentials($username, $password) {
     }
     return false;
 }
+
+// Converts a MySQL Datetime string to a more natural format, such as "In 6 hours"
+function convertDateToNatural($date) {
+    $currentDateStr = new DateTime("now", new DateTimeZone('America/New_York'));
+    $currentDateStr = $currentDateStr->format("Y-m-d H:i");
+    $currentDate = date_create($currentDateStr);
+
+    $dateStr = substr($date, 0, -3);
+    $date = date_create($dateStr);
+
+    $difference = date_diff($currentDate, $date);
+    $diffString = explode(" ", $difference->format('%R %y %m %d %h %i'));
+
+    $retVal = "";
+
+    if ($diffString[1] == 0) {
+        if ($diffString[2] == 0) {
+            if ($diffString[3] == 0) {
+                if ($diffString[4] == 0) {
+                    if ($diffString[5] == 0) {
+                        return "Now";
+                    } else {
+                        $retVal .= $diffString[5] . " minute";
+                        if ($diffString[5] > 1) {
+                            $retVal .= "s";
+                        }
+                    }
+                } else {
+                    $retVal .= $diffString[4] . " hour";
+                    if ($diffString[4] > 1) {
+                        $retVal .= "s";
+                    }
+                }
+            } else {
+                $retVal .= $diffString[3] . " day";
+                if ($diffString[3] > 1) {
+                    $retVal .= "s";
+                }
+            }
+        } else {
+            $retVal .= $diffString[2] . " month";
+            if ($diffString[2] > 1) {
+                $retVal .= "s";
+            }
+        }
+    } else {
+        $retVal .= $diffString[1] . " year";
+        if ($diffString[1] > 1) {
+            $retVal .= "s";
+        }
+    }
+
+    if ($diffString[0] == '+') {
+        $retVal = "In " . $retVal;
+    } else {
+        $retVal .= " ago";
+    }
+
+    return $retVal;
+}
