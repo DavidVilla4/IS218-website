@@ -10,7 +10,7 @@ require("config/functions.php");
 
 if (isset($_POST["username"]) && isset($_POST["password"])) {
 
-    if (validateCredentials($_POST["username"], $_POST["password"])) {
+    if (usernamePasswordExist($_POST["username"], $_POST["password"])) {
         $username = trim($_POST["username"]);
         $_SESSION["logged"] = true;
         $_SESSION["username"] = $username;

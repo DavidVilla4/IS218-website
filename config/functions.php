@@ -1,7 +1,6 @@
 <?php
-
+require("db.php");
 function checkPassword($password) {
-    $password = trim($password);
     if (strlen($password) < 8 || strlen($password) > 30) {
         return false;
     } elseif (!preg_match("/[A-Z]/", $password)) {
@@ -14,12 +13,39 @@ function checkPassword($password) {
     return true;
 }
 
+function checkPasswordValid($username, $password) {
+    try {
+        $query = "SELECT COUNT(username) AS num FROM accounts WHERE username = :username AND password = :password";
+        $params = array(":username"=>$username, ":password"=>$password);
+        $result = db_execute_one($query, $params);
+        if ($result["num"] != 0) {
+            return true;
+        }
+    } catch (PDOException $e) {
+        var_dump($e);
+    }
+    return false;
+}
+
 function checkUsername($username) {
-    $username = trim($username);
     if(!preg_match('/^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*$/', $username)) {
         return false;
     }
     return true;
+}
+
+function checkUsernameUnique($username) {
+    try {
+        $query = "SELECT COUNT(username) AS num FROM accounts WHERE username = :username";
+        $params = array(":username"=>$username);
+        $result = db_execute_one($query, $params);
+        if ($result["num"] == 0) {
+            return true;
+        }
+    } catch (PDOException $e) {
+        var_dump($e);
+    }
+    return false;
 }
 
 function checkEmail($email) {
@@ -38,8 +64,7 @@ function checkName($name) {
     return true;
 }
 
-function validateCredentials($username, $password) {
-    require("db.php");
+function usernamePasswordExist($username, $password) {
 
     // Validate username and password formats
     if (checkUsername($username) && checkPassword($password)) {

@@ -6,7 +6,8 @@ if (!isset($_SESSION["logged"]) || $_SESSION["logged"] != true) {
     exit();
 }
 
-require("../config/db.php");
+require("../config/functions.php");
+
 if (isset($_POST["delete"])) {
     $query = "DELETE FROM tasks WHERE id = :id AND username = :username";
     $params = array(":id"=>$_POST["id"],
@@ -36,7 +37,6 @@ if (isset($_POST["chron-asc"])) {
     $tableQuery = "SELECT * FROM tasks WHERE username = :username AND completed IS TRUE ORDER BY duedate DESC";
 }
 
-require("../config/functions.php");
 
 $params = array(":username" => $_SESSION["username"]);
 try {

@@ -25,6 +25,7 @@ function db_execute_one($stmtstr, $params) {
         exit("Database failure try again");
     }
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
     return $result;
 }
 
@@ -46,5 +47,6 @@ function db_execute_many($stmtstr, $params) {
         exit("Database failure try again");
     }
     $result = $stmt->fetchall(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
     return $result;
 }
