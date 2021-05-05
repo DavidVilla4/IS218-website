@@ -41,8 +41,8 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 --
 
 INSERT INTO `accounts` (`username`, `email`, `password`, `fname`, `lname`, `oldpass1`, `oldpass2`) VALUES
-('joem', 'jma@njit.edu', '111', 'Joe', 'Mama', '2345', '3456'),
-('nhoffmann', 'nh279@njit.edu', '1234', 'Nick', 'Hoffmann', '2345', '3456');
+('joem', 'jma@njit.edu', 'LogMeIn1', 'Joe', 'Mama', 'MyOldPass1', 'MyOldPass2'),
+('nhoffmann', 'nh279@njit.edu', 'LogMeIn2', 'Nick', 'Hoffmann', 'OldLogin1', 'OldLogin2');
 
 -- --------------------------------------------------------
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `duedate` datetime NOT NULL,
-  `urgency` enum('Low','Medium','High') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Enum of: low, med, high',
+  `urgency` enum('Low','Medium','High') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Enum of: Low, Medium, High',
   `completed` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Marks if task is completed or not'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
