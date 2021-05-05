@@ -28,6 +28,23 @@ if (isset($_POST["delete"])) {
     }
 }
 
+if (isset($_POST["chron-asc"])) {
+    $tableQuery = "SELECT * FROM tasks WHERE username = :username AND completed IS FALSE ORDER BY duedate ASC";
+} elseif (isset($_POST["urg-desc"])) {
+    $tableQuery = "SELECT * FROM tasks WHERE username = :username AND completed IS FALSE ORDER BY urgency DESC";
+} else {
+    $tableQuery = "SELECT * FROM tasks WHERE username = :username AND completed IS FALSE ORDER BY duedate DESC";
+}
+
+require("../config/functions.php");
+
+$params = array(":username" => $_SESSION["username"]);
+try {
+    $results = db_execute_many($tableQuery, $params);
+}  catch (PDOException $e) {
+    var_dump($e);
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -80,13 +97,40 @@ if (isset($_POST["delete"])) {
 <div class="content">
     <div class="tasks-container">
         <div class="tasks-items">
-            <h1>To-Do Tasks</h1>
+            <h1>To-Do Tasks: <?php if ($results == null) {echo 0;} else {echo count($results);} ?></h1>
         </div>
         <div class="tasks-items">
             <form method="post" action="createtask.php" class="task-list-form">
                 <button type="submit" name="createnew" value="createnew" class="new-task-button">Add New Task</button>
             </form>
         </div>
+
+        <div class="tasks-items">
+            <h2 style="font-size: x-large">Sorting</h2>
+        </div>
+
+        <div class="tasks-items">
+            <div class="flex-container-horizontal">
+                <div class="flex-item-horizontal">
+                    <form method="post" action="incomplete.php" class="task-list-form">
+                        <button type="submit" name="chron-desc" value="chron-desc" class="new-task-button">Chronological Descending</button>
+                    </form>
+                </div>
+
+                <div class="flex-item-horizontal">
+                    <form method="post" action="incomplete.php" class="task-list-form">
+                        <button type="submit" name="chron-asc" value="chron-asc" class="new-task-button">Chronological Ascending</button>
+                    </form>
+                </div>
+
+                <div class="flex-item-horizontal">
+                    <form method="post" action="incomplete.php" class="task-list-form">
+                        <button type="submit" name="urg-desc" value="urg-desc" class="new-task-button">Urgency Descending</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <br><br>
         <div class="tasks-items">
             <table border="1" frame="void" rules="rows">
@@ -105,12 +149,6 @@ if (isset($_POST["delete"])) {
                     </th>
                 </tr>
                 <?php
-                require("../config/functions.php");
-
-                $query = "SELECT * FROM tasks WHERE username = :username AND completed IS FALSE";
-                $params = array(":username" => $_SESSION["username"]);
-                try {
-                    $results = db_execute_many($query, $params);
                     if ($results == null) {
                         echo "<tr><td></td><td></td><td></td><td></td></tr>";
                     } else {
@@ -137,9 +175,6 @@ if (isset($_POST["delete"])) {
                             echo "</tr>";
                         }
                     }
-                } catch (PDOException $e) {
-                    var_dump($e);
-                }
                 ?>
             </table>
         </div>
