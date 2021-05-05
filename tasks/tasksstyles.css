@@ -1,5 +1,4 @@
 .content {
-    margin: 1em;
     color: white;
 }
 
@@ -8,8 +7,88 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
 }
 
 .tasks-items {
 
+}
+
+.new-task-button {
+    background: chocolate;
+    padding: 15px 5px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: large;
+}
+
+.new-task-button:hover {
+    color: white;
+    background: #9c5019;
+}
+
+table {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    table-layout: auto;
+}
+
+th {
+    font-size: x-large;
+}
+
+td {
+    min-width: 100px;
+    max-width: 550px;
+    padding:5px 20px;
+    font-size: large;
+    word-wrap: break-word;
+}
+
+.task-list-form {
+    display: inline;
+}
+
+.task-list-button {
+    background: chocolate;
+    width: 150px;
+    padding: 5px 3px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: medium;
+}
+
+.task-list-button:hover {
+    color: white;
+    background: #9c5019;
+}
+
+.newtask-text-area {
+    resize: none;
+}
+
+.flex-container-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-item-horizontal {
+    margin: 5px;
+    padding: 5px;
+    font-size: large;
+}
+
+.flex-item-horizontal-right {
+    margin: 5px;
+    padding: 5px;
+    text-align: left;
 }
