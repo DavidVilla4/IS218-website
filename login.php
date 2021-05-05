@@ -8,6 +8,7 @@ if (isset($_SESSION["logged"]) && $_SESSION["logged"] == true) {
 
 require("config/functions.php");
 
+$errormsg = "";
 if (isset($_POST["username"]) && isset($_POST["password"])) {
 
     if (usernamePasswordExist($_POST["username"], $_POST["password"])) {
@@ -18,13 +19,13 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
         $query = "SELECT fname, lname FROM accounts WHERE username = :username";
         $params = array(":username"=>$username);
         $results = db_execute_one($query, $params);
-        print_r($results);
+
         $_SESSION["fname"] = $results["fname"];
         $_SESSION["lname"] = $results["lname"];
         header("Location: tasks/incomplete.php");
         exit();
     } else {
-        echo "Invalid credentials";
+        $errormsg = "Invalid credentials";
     }
 }
 ?>
@@ -34,20 +35,70 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 <head>
     <meta charset="UTF-8">
     <title>Log In</title>
+    <link rel="stylesheet" href="headerstyles.css">
 </head>
 <body>
-<form action="login.php" autocomplete="off" method="post">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" maxlength="30" value="<?php if (isset($_POST["username"])) {echo $_POST["username"];} ?>" required><br><br>
 
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" maxlength="30" value="<?php if (isset($_POST["password"])) {echo $_POST["password"];} ?>" required><br><br>
 
-    <input type="submit">
+<div class="content">
+    <div class="content-container">
+        <div class="content-items">
+            <h1>
+                Log In
+            </h1>
+        </div>
 
-    <p>
-        Don't have an account? <a href="signup.php">Sign Up</a>
-    </p>
-</form>
+        <form method="post" action="login.php" autocomplete="off">
+            <div class="content-items">
+                <div class="flex-container-horizontal">
+                    <div class="flex-item-horizontal">
+                        <label for="username">
+                            Username
+                        </label>
+                    </div>
+                    <div class="flex-item-horizontal">
+                        <input type="password" id="username" name="username" maxlength="30" value="<?php if (isset($_POST["username"])) {echo $_POST["username"];} ?>" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-items">
+                <div class="flex-container-horizontal">
+                    <div class="flex-item-horizontal">
+                        <label for="password">
+                            Password
+                        </label>
+                    </div>
+                    <div class="flex-item-horizontal">
+                        <input type="password" id="password" name="password" maxlength="30" value="" required>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="content-container">
+                <div class="content-items">
+                    <button type="submit" name="login" value="login" class="big-orange-button" style="width: 100px">Log In</button>
+                </div>
+            </div>
+
+        </form>
+        <br>
+
+        <div class="content-items">
+            <form method="post" action="signup.php" class="header-link-form">
+                <button type="submit" name="signuplink" value="signuplink" class="header-link-button">Don't have an account? Click Here to Sign Up</button>
+            </form>
+
+
+        </div>
+        <br><br>
+
+        <div class="content-items">
+            <h2><?php echo $errormsg; ?></h2>
+        </div>
+
+    </div>
+</div>
 </body>
 </html>
