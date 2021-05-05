@@ -32,7 +32,7 @@ if (isset($_POST["delete"])) {
 if (isset($_POST["chron-asc"])) {
     $tableQuery = "SELECT * FROM tasks WHERE username = :username AND completed IS FALSE ORDER BY duedate ASC";
 } elseif (isset($_POST["urg-desc"])) {
-    $tableQuery = "SELECT * FROM tasks WHERE username = :username AND completed IS FALSE ORDER BY urgency DESC";
+    $tableQuery = "SELECT * FROM tasks WHERE username = :username AND completed IS FALSE ORDER BY urgency DESC, duedate ASC";
 } else {
     $tableQuery = "SELECT * FROM tasks WHERE username = :username AND completed IS FALSE ORDER BY duedate DESC";
 }
