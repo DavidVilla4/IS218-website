@@ -57,6 +57,20 @@ function checkEmail($email) {
     return true;
 }
 
+function checkEmailUnique($email) {
+    try {
+        $query = "SELECT COUNT(email) AS num FROM accounts WHERE email = :email";
+        $params = array(":email"=>$email);
+        $result = db_execute_one($query, $params);
+        if ($result["num"] == 0) {
+            return true;
+        }
+    } catch (PDOException $e) {
+        var_dump($e);
+    }
+    return false;
+}
+
 function checkName($name) {
     $name = trim($name);
     if (!preg_match('/^[^0-9]+$/', $name)) {

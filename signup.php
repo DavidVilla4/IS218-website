@@ -15,9 +15,14 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
     if (!checkUsername($_POST["username"])) {
         $errormsg = "Invalid username";
 
+    } elseif (!checkUsernameUnique($_POST["username"])) {
+        $errormsg = "Username already taken";
     // Validate format of email
     } elseif (!checkEmail($_POST["email"])) {
         $errormsg = "Invalid email";
+
+    } elseif (!checkEmailUnique($_POST["email"])) {
+        $errormsg = "Email already taken";
 
     // Validate format of password
     } elseif (!checkPassword($_POST["password"])) {
@@ -45,22 +50,7 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
             exit();
 
         } catch(PDOException $e) {
-            // Checks if database returned a duplicate key error
-            if ($e->errorInfo[1] == 1062) {
-
-                // Checks if duplicate key is 'email'
-                if (!(strpos($e->errorInfo[2], "'email'") === false)) {
-                    $errormsg = "Email already taken";
-
-                // Checks if duplicate key is 'PRIMARY', which in this case means the username already exists
-                } elseif (!(strpos($e->errorInfo[2], "'PRIMARY'") === false)) {
-                    $errormsg = "Username already taken";
-                } else {
-                    echo "Connection failed: " . $e->getMessage();
-                }
-            } else {
-                var_export($e);
-            }
+            var_export($e);
         }
     }
 }
