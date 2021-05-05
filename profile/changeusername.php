@@ -77,7 +77,7 @@ if (isset($_POST["submitnamechange"])) {
 
             <div class="header-item">
                 <form method="post" action="profile.php" class="header-link-form">
-                    <button type="submit" name="profile" value="profile" class="header-link-button">Profile</button>
+                    <button type="submit" name="profile" value="profile" class="header-link-button" style="color: chocolate">Profile</button>
                 </form>
             </div>
         </div>

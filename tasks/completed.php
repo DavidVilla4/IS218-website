@@ -69,7 +69,7 @@ try {
 
             <div class="header-item">
                 <form method="post" action="completed.php" class="header-link-form">
-                    <button type="submit" name="completed" value="completed" class="header-link-button">Completed</button>
+                    <button type="submit" name="completed" value="completed" class="header-link-button" style="color: chocolate">Completed</button>
                 </form>
             </div>
         </div>

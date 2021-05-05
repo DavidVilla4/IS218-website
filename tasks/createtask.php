@@ -45,7 +45,7 @@ if (isset($_POST["title"])) {
         <div class="header-items-left">
             <div class="header-item">
                 <form method="post" action="incomplete.php" class="header-link-form">
-                    <button type="submit" name="incomplete" value="incomplete" class="header-link-button">To-Do</button>
+                    <button type="submit" name="incomplete" value="incomplete" class="header-link-button" style="color: chocolate">To-Do</button>
                 </form>
             </div>
 

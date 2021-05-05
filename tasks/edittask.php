@@ -59,13 +59,13 @@ if (isset($_POST["submitedit"])) {
         <div class="header-items-left">
             <div class="header-item">
                 <form method="post" action="incomplete.php" class="header-link-form">
-                    <button type="submit" name="incomplete" value="incomplete" class="header-link-button">To-Do</button>
+                    <button type="submit" name="incomplete" value="incomplete" class="header-link-button" <?php if (isset($_POST["prevpage"]) && $_POST["prevpage"] == "incomplete.php") echo 'style="color: chocolate"'; ?>>To-Do</button>
                 </form>
             </div>
 
             <div class="header-item">
                 <form method="post" action="completed.php" class="header-link-form">
-                    <button type="submit" name="completed" value="completed" class="header-link-button">Completed</button>
+                    <button type="submit" name="completed" value="completed" class="header-link-button" <?php if (isset($_POST["prevpage"]) && $_POST["prevpage"] == "completed.php") echo 'style="color: chocolate"'; ?>>Completed</button>
                 </form>
             </div>
         </div>
