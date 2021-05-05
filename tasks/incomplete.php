@@ -120,6 +120,7 @@ if (isset($_POST["delete"])) {
                                 "high" => "High",
                                 default => "Medium",
                             };
+                            $currentFile = basename(__FILE__);
                             echo "<tr>";
                             echo "<td>" . $task["title"] . "</td>";
                             echo "<td>" . $task["description"] . "</td>";
@@ -131,6 +132,7 @@ if (isset($_POST["delete"])) {
                               </form></td>";
                             echo "<td><form method='post' action='edittask.php' class='task-list-form'>
                                     <input type='hidden' name='id' value='${task["id"]}'>
+                                    <input type='hidden' name='prevpage' value='${currentFile}'>
                                     <button type='submit' name='edit' value='edit' class='task-list-button'>Edit Task</button>
                               </form></td>";
                             echo "<td><form method='post' action='incomplete.php' class='task-list-form'>
