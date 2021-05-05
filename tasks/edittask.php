@@ -141,9 +141,9 @@ if (isset($_POST["submitedit"])) {
 
                     <div class="flex-item-horizontal-right">
                         <select name="urgency" id="urgency" >
-                            <option value="low" <?php if ($result["urgency"] == "Low") echo "selected"; ?>>Low</option>
-                            <option value="med" <?php if ($result["urgency"] == "Medium") echo "selected"; ?>>Medium</option>
-                            <option value="high" <?php if ($result["urgency"] == "High") echo "selected"; ?>>High</option>
+                            <option value="Low" <?php if ($result["urgency"] == "Low") echo "selected"; ?>>Low</option>
+                            <option value="Medium" <?php if ($result["urgency"] == "Medium") echo "selected"; ?>>Medium</option>
+                            <option value="High" <?php if ($result["urgency"] == "High") echo "selected"; ?>>High</option>
                         </select><br>
                     </div>
                 </div>
