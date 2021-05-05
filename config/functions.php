@@ -28,7 +28,9 @@ function checkPasswordValid($username, $password) {
 }
 
 function checkUsername($username) {
-    if(!preg_match('/^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*$/', $username)) {
+    if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
+        return false;
+    } elseif (!preg_match('/^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*$/', $username)) {
         return false;
     }
     return true;
@@ -49,7 +51,6 @@ function checkUsernameUnique($username) {
 }
 
 function checkEmail($email) {
-    $email = trim($email);
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         return false;
     }
