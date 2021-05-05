@@ -13,6 +13,8 @@ if (!isset($_SESSION["logged"]) || $_SESSION["logged"] != true) {
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../headerstyles.css">
 
 </head>

@@ -35,6 +35,8 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 <head>
     <meta charset="UTF-8">
     <title>Log In</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="headerstyles.css">
 </head>
 <body>

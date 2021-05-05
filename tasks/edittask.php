@@ -47,8 +47,11 @@ if (isset($_POST["submitedit"])) {
 <head>
     <meta charset="UTF-8">
     <title>Edit Task</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../headerstyles.css">
     <link rel="stylesheet" href="taskstyles.css">
+
 </head>
 <body>
 <div class="header">
