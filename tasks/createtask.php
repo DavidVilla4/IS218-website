@@ -35,7 +35,7 @@ if (isset($_POST["title"])) {
     <meta charset="UTF-8">
     <title>Create New Task</title>
     <link rel="stylesheet" href="../headerstyles.css">
-    <link rel="stylesheet" href="tasksstyles.css">
+    <link rel="stylesheet" href="taskstyles.css">
 </head>
 <body>
 <div class="header">
@@ -77,14 +77,14 @@ if (isset($_POST["title"])) {
 </div>
 
 <div class="content">
-    <div class="tasks-container">
-        <div class="tasks-items">
+    <div class="content-container">
+        <div class="content-items">
             <h1>
                 Create New To-Do Task
             </h1>
         </div>
             <form method="post" action="createtask.php" autocomplete="off">
-                <div class="tasks-items">
+                <div class="content-items">
                     <div class="flex-container-horizontal">
                         <div class="flex-item-horizontal">
                             <label for="title">
@@ -97,7 +97,7 @@ if (isset($_POST["title"])) {
                     </div>
                 </div>
 
-                <div class="tasks-items">
+                <div class="content-items">
                     <div class="flex-container-horizontal">
                         <div class="flex-item-horizontal">
                             <label for="description">
@@ -110,7 +110,7 @@ if (isset($_POST["title"])) {
                     </div>
                 </div>
 
-                <div class="tasks-items">
+                <div class="content-items">
                     <div class="flex-container-horizontal">
                         <div class="flex-item-horizontal">
                             <label for="urgency">
@@ -128,7 +128,7 @@ if (isset($_POST["title"])) {
                     </div>
                 </div>
 
-                <div class="tasks-items">
+                <div class="content-items">
                     <div class="flex-container-horizontal">
                         <div class="flex-item-horizontal">
                             <label for="duedate">
@@ -142,8 +142,8 @@ if (isset($_POST["title"])) {
                 </div>
                 <br>
 
-                <div class="tasks-container">
-                    <div class="tasks-items" style="justify-content: ">
+                <div class="content-container">
+                    <div class="content-items" style="justify-content: ">
                         <button type="submit" name="createtask" value="createtask" class="big-orange-button">Create Task</button>
                     </div>
                 </div>

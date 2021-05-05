@@ -53,7 +53,7 @@ try {
     <meta charset="UTF-8">
     <title>To-Do Tasks</title>
     <link rel="stylesheet" href="../headerstyles.css">
-    <link rel="stylesheet" href="tasksstyles.css">
+    <link rel="stylesheet" href="taskstyles.css">
 </head>
 <body>
 <div class="header">
@@ -95,21 +95,21 @@ try {
 </div>
 
 <div class="content">
-    <div class="tasks-container">
-        <div class="tasks-items">
+    <div class="content-container">
+        <div class="content-items">
             <h1>To-Do Tasks: <?php if ($results == null) {echo 0;} else {echo count($results);} ?></h1>
         </div>
-        <div class="tasks-items">
+        <div class="content-items">
             <form method="post" action="createtask.php" class="task-list-form">
                 <button type="submit" name="createnew" value="createnew" class="big-orange-button">Add New Task</button>
             </form>
         </div>
 
-        <div class="tasks-items">
+        <div class="content-items">
             <h2 style="font-size: x-large">Sorting</h2>
         </div>
 
-        <div class="tasks-items">
+        <div class="content-items">
             <div class="flex-container-horizontal">
                 <div class="flex-item-horizontal">
                     <form method="post" action="incomplete.php" class="task-list-form">
@@ -132,7 +132,7 @@ try {
         </div>
 
         <br><br>
-        <div class="tasks-items">
+        <div class="content-items">
             <table border="1" frame="void" rules="rows">
                 <tr>
                     <th>

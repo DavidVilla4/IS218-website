@@ -48,7 +48,7 @@ if (isset($_POST["submitedit"])) {
     <meta charset="UTF-8">
     <title>Edit Task</title>
     <link rel="stylesheet" href="../headerstyles.css">
-    <link rel="stylesheet" href="tasksstyles.css">
+    <link rel="stylesheet" href="taskstyles.css">
 </head>
 <body>
 <div class="header">
@@ -90,8 +90,8 @@ if (isset($_POST["submitedit"])) {
 </div>
 
 <div class="content">
-    <div class="tasks-container">
-        <div class="tasks-items">
+    <div class="content-container">
+        <div class="content-items">
             <h1>
                 Edit Task
             </h1>
@@ -102,7 +102,7 @@ if (isset($_POST["submitedit"])) {
             <input type="hidden" name="id" value="<?php echo $result["id"]; ?>">
             <input type="hidden" name="prevpage" value="<?php echo $_POST["prevpage"]; ?>">
 
-            <div class="tasks-items">
+            <div class="content-items">
                 <div class="flex-container-horizontal">
                     <div class="flex-item-horizontal">
                         <label for="title">
@@ -115,7 +115,7 @@ if (isset($_POST["submitedit"])) {
                 </div>
             </div>
 
-            <div class="tasks-items">
+            <div class="content-items">
                 <div class="flex-container-horizontal">
                     <div class="flex-item-horizontal">
                         <label for="description">
@@ -128,7 +128,7 @@ if (isset($_POST["submitedit"])) {
                 </div>
             </div>
 
-            <div class="tasks-items">
+            <div class="content-items">
                 <div class="flex-container-horizontal">
                     <div class="flex-item-horizontal">
                         <label for="urgency">
@@ -146,7 +146,7 @@ if (isset($_POST["submitedit"])) {
                 </div>
             </div>
 
-            <div class="tasks-items">
+            <div class="content-items">
                 <div class="flex-container-horizontal">
                     <div class="flex-item-horizontal">
                         <label for="duedate">
@@ -160,8 +160,8 @@ if (isset($_POST["submitedit"])) {
             </div>
             <br>
 
-            <div class="tasks-container">
-                <div class="tasks-items" style="justify-content: ">
+            <div class="content-container">
+                <div class="content-items" style="justify-content: ">
                     <button type="submit" name="submitedit" value="submitedit" class="big-orange-button">Edit Task</button>
                 </div>
             </div>

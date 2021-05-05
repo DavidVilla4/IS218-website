@@ -2,22 +2,6 @@
     color: white;
 }
 
-.tasks-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 95%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-}
-
-.tasks-items {
-
-}
-
-
-
 table {
     width: 95%;
     margin-left: 2.5%;
@@ -61,21 +45,3 @@ td {
     resize: none;
 }
 
-.flex-container-horizontal {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.flex-item-horizontal {
-    margin: 5px;
-    padding: 5px;
-    font-size: large;
-}
-
-.flex-item-horizontal-right {
-    margin: 5px;
-    padding: 5px;
-    text-align: left;
-}
