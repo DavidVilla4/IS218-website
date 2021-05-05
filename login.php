@@ -89,8 +89,6 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
             <form method="post" action="signup.php" class="header-link-form">
                 <button type="submit" name="signuplink" value="signuplink" class="header-link-button">Don't have an account? Click Here to Sign Up</button>
             </form>
-
-
         </div>
         <br><br>
 

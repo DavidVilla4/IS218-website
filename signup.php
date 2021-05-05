@@ -6,32 +6,32 @@ if (isset($_SESSION["logged"]) && $_SESSION["logged"] == true) {
     exit();
 }
 
+$errormsg = "";
 if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["fname"]) && isset($_POST["lname"])) {
 
     require("config/functions.php");
 
     // Validate format of username
     if (!checkUsername($_POST["username"])) {
-        echo "Invalid username";
+        $errormsg = "Invalid username";
 
     // Validate format of email
     } elseif (!checkEmail($_POST["email"])) {
-        echo "Invalid email";
+        $errormsg = "Invalid email";
 
     // Validate format of password
     } elseif (!checkPassword($_POST["password"])) {
-        echo "Invalid password";
+        $errormsg = "Invalid password";
 
     // Validate format of first name
     } elseif (!checkName($_POST["fname"])) {
-        echo "Invalid first name";
+        $errormsg = "Invalid first name";
 
     // Validate format of last name
     } elseif (!checkName($_POST["lname"])) {
-        echo "Invalid last name";
+        $errormsg = "Invalid last name";
     } else {
         try {
-            require("config/db.php");
 
             // Check if username already exists in database
             $query = "INSERT INTO `accounts`(`username`, `email`, `password`, `fname`, `lname`) VALUES (:username, :email, :password, :fname, :lname)";
@@ -50,11 +50,11 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
 
                 // Checks if duplicate key is 'email'
                 if (!(strpos($e->errorInfo[2], "'email'") === false)) {
-                    echo "Email already taken";
+                    $errormsg = "Email already taken";
 
                 // Checks if duplicate key is 'PRIMARY', which in this case means the username already exists
                 } elseif (!(strpos($e->errorInfo[2], "'PRIMARY'") === false)) {
-                    echo "Username already taken";
+                    $errormsg = "Username already taken";
                 } else {
                     echo "Connection failed: " . $e->getMessage();
                 }
@@ -71,26 +71,93 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="headerstyles.css">
 </head>
 <body>
-<form action="signup.php" autocomplete="off" method="post">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" value="<?php if (isset($_POST["username"])) {echo $_POST["username"];} ?>" required><br><br>
 
-    <label for="email">Email</label>
-    <input type="text" id="email" name="email" value="<?php if (isset($_POST["email"])) {echo $_POST["email"];} ?>" required><br><br>
 
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" value="<?php if (isset($_POST["password"])) {echo $_POST["password"];} ?>" minlength="8" maxlength="30" required><br><br>
+<div class="content">
+    <div class="content-container">
+        <div class="content-items">
+            <h1>Sign Up</h1>
+        </div>
 
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="fname" value="<?php if (isset($_POST["fname"])) {echo $_POST["fname"];} ?>" required><br><br>
+        <form action="signup.php" autocomplete="off" method="post">
+            <div class="content-items">
+                <div class="flex-container-horizontal">
+                    <div class="flex-item-horizontal">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="flex-item-horizontal">
+                        <input type="text" id="username" name="username" minlength="3" maxlength="30" value="<?php if (isset($_POST["username"])) {echo $_POST["username"];} ?>" required>
+                    </div>
+                </div>
+            </div>
 
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lname" value="<?php if (isset($_POST["lname"])) {echo $_POST["lname"];} ?>" required><br><br>
+            <div class="content-items">
+                <div class="flex-container-horizontal">
+                    <div class="flex-item-horizontal">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="flex-item-horizontal">
+                        <input type="text" id="email" name="email" value="<?php if (isset($_POST["email"])) {echo $_POST["email"];} ?>" required>
+                    </div>
+                </div>
+            </div>
 
-    <input type="submit">
-</form>
+            <div class="content-items">
+                <div class="flex-container-horizontal">
+                    <div class="flex-item-horizontal">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="flex-item-horizontal">
+                        <input type="password" id="password" name="password" minlength="8" maxlength="30" value="<?php if (isset($_POST["password"])) {echo $_POST["password"];} ?>" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-items">
+                <div class="flex-container-horizontal">
+                    <div class="flex-item-horizontal">
+                        <label for="fname">First Name</label>
+                    </div>
+                    <div class="flex-item-horizontal">
+                        <input type="text" id="fname" name="fname" value="<?php if (isset($_POST["fname"])) {echo $_POST["fname"];} ?>" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-items">
+                <div class="flex-container-horizontal">
+                    <div class="flex-item-horizontal">
+                        <label for="lname">Last Name</label>
+                    </div>
+                    <div class="flex-item-horizontal">
+                        <input type="text" id="lname" name="lname" value="<?php if (isset($_POST["lname"])) {echo $_POST["lname"];} ?>" required>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="content-container">
+                <div class="content-items">
+                    <button type="submit" name="signup" value="signup" class="big-orange-button" style="width: 100px">Sign Up</button>
+                </div>
+            </div>
+        </form>
+        <br>
+
+        <div class="content-items">
+            <form method="post" action="login.php" class="header-link-form">
+                <button type="submit" name="loginlink" value="loginlink" class="header-link-button">Back to Log In page</button>
+            </form>
+        </div>
+        <br><br>
+
+        <div class="content-items">
+            <h2><?php echo $errormsg; ?></h2>
+        </div>
+    </div>
+</div>
 </body>
 </html>
