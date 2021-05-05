@@ -49,11 +49,11 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
             if ($e->errorInfo[1] == 1062) {
 
                 // Checks if duplicate key is 'email'
-                if (str_contains($e->errorInfo[2], "'email'")) {
+                if (!(strpos($e->errorInfo[2], "'email'") === false)) {
                     echo "Email already taken";
 
                 // Checks if duplicate key is 'PRIMARY', which in this case means the username already exists
-                } elseif (str_contains($e->errorInfo[2], "'PRIMARY'")) {
+                } elseif (!(strpos($e->errorInfo[2], "'PRIMARY'") === false)) {
                     echo "Username already taken";
                 } else {
                     echo "Connection failed: " . $e->getMessage();
