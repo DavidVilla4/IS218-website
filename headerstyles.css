@@ -81,6 +81,10 @@ body {
     background: #9c5019;
 }
 
+.content {
+    color: white;
+}
+
 .content-container {
     display: flex;
     flex-direction: column;
