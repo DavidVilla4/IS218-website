@@ -156,7 +156,7 @@ try {
                         echo "<td>" . $task["urgency"] . "</td>";
                         echo "<td><form method='post' action='completed.php' class='task-list-form'>
                                     <input type='hidden' name='id' value='${task["id"]}'>
-                                    <button type='submit' name='markincomplete' value='markincomplete' class='task-list-button'>Mark Inomplete</button>
+                                    <button type='submit' name='markincomplete' value='markincomplete' class='task-list-button'>Mark Incomplete</button>
                               </form></td>";
                         echo "<td><form method='post' action='edittask.php' class='task-list-form'>
                                     <input type='hidden' name='id' value='${task["id"]}'>
